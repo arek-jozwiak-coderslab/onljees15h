@@ -38,4 +38,14 @@ public class BookController {
         return "Hello World";
     }
 
+
+    @RequestMapping("/get-books")
+    @ResponseBody
+    public String books() {
+        bookDao.list().forEach(b -> System.out.println(b.getTitle()));
+        System.out.println("----------------");
+        bookDao.listByRating(2).forEach(b -> System.out.println(b.getTitle()));
+        return "Hello World";
+    }
+
 }
