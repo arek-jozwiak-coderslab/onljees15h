@@ -19,6 +19,9 @@ public class Book {
     @ManyToOne
     private Author author;
 
+    @ManyToOne
+    private Category category;
+
     @NotNull
     @ManyToOne
     private Publisher publisher;
@@ -30,6 +33,13 @@ public class Book {
     @Size(max = 600)
     private String description;
 
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
 
     public Publisher getPublisher() {
         return publisher;
