@@ -1,6 +1,10 @@
 package pl.coderslab.book;
 
 import javax.persistence.*;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.List;
 
 @Entity
@@ -9,13 +13,23 @@ public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Size(min = 5)
     private String title;
 
     @ManyToOne
     private Author author;
 
+    @NotNull
     @ManyToOne
     private Publisher publisher;
+    @Min(1)
+    @Max(10)
+    private int rating;
+    @Min(1)
+    private int pages;
+    @Size(max = 600)
+    private String description;
+
 
     public Publisher getPublisher() {
         return publisher;
@@ -33,8 +47,13 @@ public class Book {
         this.author = author;
     }
 
-    private int rating;
-    private String description;
+    public int getPages() {
+        return pages;
+    }
+
+    public void setPages(int pages) {
+        this.pages = pages;
+    }
 
     public Long getId() {
         return id;

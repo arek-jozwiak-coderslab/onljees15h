@@ -19,6 +19,7 @@ public class BookFormController {
 
     @GetMapping("/add")
     public String add(Model model) {
+
         model.addAttribute("book", new Book());
         model.addAttribute("publishers", publisherDao.findAll());
         return "book/add";

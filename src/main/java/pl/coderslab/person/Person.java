@@ -5,6 +5,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 @Entity
 public class Person {
@@ -14,8 +17,11 @@ public class Person {
     private Long id;
 
 
+    @NotBlank
     private String login;
 
+    @Min(10)
+    @Size(min = 10, max = 100)
     private String password;
     private String email;
 
